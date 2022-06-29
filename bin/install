@@ -44,6 +44,8 @@ get_arch() {
         arch="amd64"
     elif [ "$(uname -m)" = "aarch64" ]; then
         arch="arm"
+    elif [ "$(uname -m)" = "arm64" ] && [ $(get_platform) = "darwin" ]; then # Super gross workaround for the fact that there is no darwin-arm64 goss yet.
+        arch="amd64"
     else
         arch="386"
     fi
